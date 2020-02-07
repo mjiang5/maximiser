@@ -1,1 +1,1 @@
-web: streamlit run maxmiser.py --server.port $PORT --browser.serverAddress http://maxmiser.herokuapp.com
+web: streamlit run maximiser.py --server.port $PORT --browser.serverAddress http://maximiser.herokuapp.com
