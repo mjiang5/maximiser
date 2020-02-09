@@ -293,19 +293,17 @@ plt.tight_layout()
 st.sidebar.subheader('Validation')
 st.sidebar.markdown('Optimal Strategy Return: '+str(total_return))
 st.sidebar.markdown('vs')
-st.sidebar.markdown('Base Line Strategy Return: '+str(lazy_total_return))
+st.sidebar.markdown('Lazy Strategy Return: '+str(lazy_total_return))
 
 
 st.sidebar.subheader('')
 st.sidebar.subheader('')
 
-st.sidebar.subheader('Base Line Strategy:')
-if st.sidebar.button('Show'):
-    st.subheader('Base Line Strategy:')
-    st.table(lazy_holding[holding_cols])
-    st.subheader('Base Line Return:')
-    st.write(lazy_total_return)
-    st.pyplot(fig2, dpi=200)
+st.subheader('Lazy Strategy:')
+st.table(lazy_holding[holding_cols])
+st.subheader('Lazy Strategy Return:')
+st.write(lazy_total_return)
+st.pyplot(fig2, dpi=200)
 
 
 
