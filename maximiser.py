@@ -13,7 +13,7 @@ plt.style.use('classic')
 
 st.title('MaxiMiser')
 st.write('')
-st.write('Simple bonus investing strategy of opening new checking or saving accounts')
+st.write('Simple bonus optimization strategy of opening new checking or saving accounts')
 
 scraped_df = pd.read_csv('real_time_bonuses.csv')
 scraped_df = scraped_df.iloc[:, 1:]
