@@ -24,7 +24,7 @@ bonus_df = scraped_df
 
 st.sidebar.subheader('Your requirements:')
 budget = st.sidebar.number_input('Maximum monthly direct deposit:', min_value=100.0, step=500.0)
-num_account = st.sidebar.number_input('Maximum number of accounts:', min_value=1.0, step=1.0)
+num_account = st.sidebar.number_input('Maximum number of accounts:', min_value=1.0, step=1.0, max_value=6.0)
 
 
 ######## build the optimal strategy ###########
