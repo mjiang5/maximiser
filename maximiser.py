@@ -99,7 +99,6 @@ close_date = [optimal_holding.loc[i, 'close'].days for i in optimal_holding.inde
 offers = ['Bonus {}'.format(i) for i in optimal_holding.index]
 
 from matplotlib.ticker import MultipleLocator
-import matplotlib.ticker as ticker
                                
 fig1 = plt.figure(figsize=(18, 5))
 ax = fig1.add_subplot(111)
@@ -121,7 +120,7 @@ plt.yticks(np.arange(0.5, len(open_date)+0.5), offers)
 
 ax.xaxis.grid(True, which='major', color='w', lw=1, linestyle='solid')
 ax.yaxis.grid(True, which='minor', color='w', lw=1, linestyle='solid')
-ax.xaxis.set_major_locator(ticker.FixedLocator(xlist))
+ax.xaxis.set_major_locator(MultipleLocator(1))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 
 # hide axis spines
