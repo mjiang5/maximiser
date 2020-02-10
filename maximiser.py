@@ -9,7 +9,7 @@ st.title('MaxiMiser')
 st.write('')
 st.write('Simple bonus optimization strategy of opening new checking or saving accounts')
 
-scraped_df = pd.read_csv('real_time_bonuses.csv')
+scraped_df = pd.read_csv('data/real_time_bonuses.csv')
 scraped_df = scraped_df.iloc[:, 1:]
 scraped_df = scraped_df.drop(columns=['post_link'])
 
