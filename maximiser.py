@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -48,7 +42,7 @@ ini_month = dict(zip(bonus_title, bonus_df['ini_month']))
 end_month = dict(zip(bonus_title, bonus_df['end_month']))
 open_date = dict(zip(bonus_title, bonus_df['open_date']))
 
-# variables
+# vector of variables
 holdings = LpVariable.dicts("offer", bonus_title, cat='Binary')
 
 for m in months:
@@ -62,29 +56,9 @@ problem += lpSum([bonus_amount[i]*holdings[i] for i in bonus_title])
 problem.solve()
 
 status = LpStatus[problem.status]
-# if st.sidebar.button('Submit!'):
-#     if status:
-#         st.subheader('Got the optimal solution!')
-#     else:
-#         st.subheader('Something went wrong!')
-# print("Status:", status)
-
-
-# for v in problem.variables():
-#     if v.varValue==1:
-#         print(v.name)
         
 total_return = value(problem.objective)
-# print('Total return: ', total_return)
 
-
-# for v in holdings:
-#     if holdings[v].varValue == 1:
-#         st.write(v)
-#         st.write('Open date: ' + str(open_date[v]))
-#         st.write('Account keeping time: ' + str(int(account_keeping_time[v]))+' month')
-#         st.write('Monthly Direct Deposit: ' + str(monthly_dd_amount[v]))
-#         st.write('Bonus: ' + str(bonus_amount[v]))
 
 optimal_holding = pd.DataFrame(columns=['Offer', 'Monthly Direct Deposit', 'Bonus', 'Open Date', 'Keeping Time (Month)'])
 
@@ -98,9 +72,8 @@ for v in holdings:
         optimal_holding.loc[i, 'Keeping Time (Month)'] = account_keeping_time[v] #int()?
         i += 1
 
-# optimal_holding
 
-#from datetime import timedelta
+
 base_day = dt.datetime(2019, 12, 31)
 
 optimal_holding['Close Date'] = optimal_holding['Keeping Time (Month)'].apply(lambda x: dt.timedelta(31*x))
@@ -115,22 +88,8 @@ optimal_holding['close'] = optimal_holding['Close Date']-base_day
 
 optimal_holding['Open Date'] = optimal_holding['Open Date'].dt.strftime('%m-%d-%Y')
 optimal_holding['Close Date'] = optimal_holding['Close Date'].dt.strftime('%m-%d-%Y')
-# optimal_holding
-
-# optimal_holding = optimal_holding.set_index('Offer')
-# optimal_holding.index.name = 'Offer'
 
 
-        
-# for v in holdings:
-#     if holdings[v].varValue==1:
-#         print(v)
-#         print('Monthly Direct Deposit: ' + str(monthly_dd_amount[v]))
-#         print('Bonus: ' + str(bonus_amount[v]))
-#         print('Open date: ' + str(open_date[v]))
-#         print('Account keeping time: ' + str(int(account_keeping_time[v]))+' month')
-#         print(holdings[v].varValue)
-#         print()
 
 open_date = [optimal_holding.loc[i, 'open'].days for i in optimal_holding.index]
 close_date = [optimal_holding.loc[i, 'close'].days for i in optimal_holding.index]
@@ -226,41 +185,16 @@ lazy_holding['Open Date'] = lazy_holding['Open Date'].dt.strftime('%m-%d-%Y')
 lazy_holding['Close Date'] = lazy_holding['Close Date'].dt.strftime('%m-%d-%Y')
 
 
-# for i in range(len(lazy_holding)):
-#     st.write(lazy_holding.loc[i, 'title'])
-#     st.write('Monthly Direct Deposit: ' + str(lazy_holding.loc[i, 'monthly_dd_amount']))
-#     st.write('Bonus: ' + str(lazy_holding.loc[i, 'bonus_amount']))
-#     st.write('Open date: ' + str(lazy_holding.loc[i, 'open_date']))
-#     st.write('Account keeping time: ' + str(lazy_holding.loc[i,'account_keeping_time'])+' month')
-   
-  
-    
-# for i in range(len(lazy_holding)):
-#     print(lazy_holding.loc[i, 'title'])
-#     print('Monthly Direct Deposit: ' + str(lazy_holding.loc[i, 'monthly_dd_amount']))
-#     print('Bonus: ' + str(lazy_holding.loc[i, 'bonus_amount']))
-#     print('Open date: ' + str(lazy_holding.loc[i, 'open_date']))
-#     print('Account keeping time: ' + str(lazy_holding.loc[i,'account_keeping_time'])+' month')
-#     print()
-
-# print(lazy_total_return)
-# lazy_holding
 
 lazy_open_date = [lazy_holding.loc[i, 'open'].days for i in lazy_holding.index]
 lazy_close_date = [lazy_holding.loc[i, 'close'].days for i in lazy_holding.index]
 
 lazy_offers = ['Bonus {}'.format(i) for i in lazy_holding.index]
 
-#from matplotlib.ticker import MultipleLocator
                                
 fig2 = plt.figure(figsize=(18, 5))
 ax = fig2.add_subplot(111)
 
-# lazy_open_date = [pd.to_datetime(lazy_holding.loc[i, 'Open Date']) for i in lazy_holding.index]
-# lazy_day1 = [x.month + x.day/31 for x in lazy_open_date]
-# lazy_day_range = [lazy_holding.loc[i, 'Keeping Time (Month)'] for i in lazy_holding.index]
-# lazy_day2 = [lazy_day1[i] + lazy_day_range[i] for i in range(len(lazy_day1))]
-# lazy_offers = [lazy_holding.loc[i, 'Offer'] for i in lazy_holding.index]
 
 for i in range(len(lazy_open_date)):
     plt.plot([lazy_open_date[i], lazy_close_date[i]], [i+0.5, i+0.5], lw=55, c='blue')
