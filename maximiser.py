@@ -113,8 +113,7 @@ ax.set_aspect(40)
 plt.tick_params(axis='x', which='both', bottom=True, top=False)
 plt.tick_params(axis='y', which='both', left=False, right=False)
 xlist = [0, 90, 181, 273, 365, 455, 546, 638, 730]
-xlabels = ['0', '90', '181', '273', '365', '455', '546', '638', '730']
-#xlabels=['2019-12', '2020-03', '2020-06', '2020-9', '2020-12', '2021-03', '2021-06', '2021-09', '2021-12']
+xlabels=['2019-12', '2020-03', '2020-06', '2020-9', '2020-12', '2021-03', '2021-06', '2021-09', '2021-12']
 plt.xticks(xlist, xlabels)
 plt.yticks(np.arange(0.5, len(open_date)+0.5), offers)
 
