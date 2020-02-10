@@ -74,7 +74,7 @@ for v in holdings:
 
 
 
-base_day = dt.datetime(2019, 12, 31)
+base_day = dt.datetime(2020, 1, 1)
 
 optimal_holding['Close Date'] = optimal_holding['Keeping Time (Month)'].apply(lambda x: dt.timedelta(31*x))
 optimal_holding['Close Date'] += optimal_holding['Open Date'].apply(pd.to_datetime)
@@ -104,7 +104,7 @@ ax = fig1.add_subplot(111)
 for i in range(len(open_date)):
     plt.plot([open_date[i], close_date[i]], [i+0.5, i+0.5], lw=55, c='blue')  #########
 
-#plt.xlim(pd.to_datetime('Jan 2020'), pd.to_datetime('Jan 2022')) ###########
+
 plt.xlim(0, 365*2)
 plt.ylim(0, len(open_date))
 ax.set_aspect(40)
@@ -114,7 +114,6 @@ xlist = [0, 90, 181, 273, 365, 455, 546, 638, 730]
 xlabels=['2019-12', '2020-03', '2020-06', '2020-9', '2020-12', '2021-03', '2021-06', '2021-09', '2021-12']
 plt.xticks(xlist, xlabels)
 plt.yticks(np.arange(0.5, len(open_date)+0.5), offers)
-
 
 ax.xaxis.grid(True, which='major', color='w', lw=1, linestyle='solid')
 ax.yaxis.grid(True, which='minor', color='w', lw=1, linestyle='solid')
@@ -129,13 +128,11 @@ ax.set_facecolor('lavender')
 fig1.patch.set_alpha(0.)
 plt.tight_layout()
 
-
 st.sidebar.subheader('')
 st.sidebar.subheader('')
 
 
-# if st.sidebar.button('Optimal Strategy'):
-holding_cols = ['Offer', 'Monthly Direct Deposit', 'Bonus', 'Open Date', 'Keeping Time (Month)', 'Close Date']
+holding_cols = ['Offer', 'Open Date', 'Keeping Time (Month)', 'Close Date', 'Monthly Direct Deposit', 'Bonus']
 st.subheader('Optimal Strategy:')
 st.table(optimal_holding[holding_cols])
 st.subheader('Optimal Return:')
@@ -185,7 +182,6 @@ lazy_holding['Open Date'] = lazy_holding['Open Date'].dt.strftime('%m-%d-%Y')
 lazy_holding['Close Date'] = lazy_holding['Close Date'].dt.strftime('%m-%d-%Y')
 
 
-
 lazy_open_date = [lazy_holding.loc[i, 'open'].days for i in lazy_holding.index]
 lazy_close_date = [lazy_holding.loc[i, 'close'].days for i in lazy_holding.index]
 
@@ -228,7 +224,6 @@ st.sidebar.subheader('Validation')
 st.sidebar.markdown('Optimal Strategy Return: '+str(total_return))
 st.sidebar.markdown('vs')
 st.sidebar.markdown('Lazy Strategy Return: '+str(lazy_total_return))
-
 
 st.sidebar.subheader('')
 st.sidebar.subheader('')
