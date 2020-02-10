@@ -1,1 +1,1 @@
-# maximiser
+# MaxiMiser
