@@ -2,6 +2,7 @@
 ##### Simple bonus optimization strategy of opening new checking or saving accounts
 
 A web application to maximize bank account sign up strategy for optimal return based on user’s budget constraints and personalized requirements
+
 Link: https://maximiser.herokuapp.com
 
 ## Project Description
