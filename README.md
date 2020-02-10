@@ -16,9 +16,7 @@ This web application is built to help users to find an optimal bonus strategy to
 ## Directory Structure
 
 ├── README.md 
-
 │
-
 ├── notebooks 
 
 │   ├── scraping_data.ipynb    
