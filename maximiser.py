@@ -119,7 +119,7 @@ plt.yticks(np.arange(0.5, len(open_date)+0.5), offers)
 
 ax.xaxis.grid(True, which='major', color='w', lw=1, linestyle='solid')
 ax.yaxis.grid(True, which='minor', color='w', lw=1, linestyle='solid')
-ax.xaxis.set_major_locator(MultipleLocator(1))
+ax.xaxis.set_minor_locator(MultipleLocator(1))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 
 # hide axis spines
@@ -155,9 +155,6 @@ lazy = lazy_df.iloc[0]
 lazy_holding = lazy_holding.append(lazy_df.iloc[0])
 
 lazy_total_return = np.sum(lazy_holding['bonus'])
-
-# print('Total return: '+ str(lazy_total_return))
-# print()
 
 lazy_holding.reset_index(drop=True, inplace=True)
 
@@ -200,13 +197,11 @@ for i in range(len(lazy_open_date)):
 plt.xlim(0, 365*2)
 plt.ylim(0, len(lazy_open_date))
 ax.set_aspect(40)
-# plt.grid(b=True, which='both', axis='both')
 plt.tick_params(axis='x', which='both', bottom=False, top=False)
 plt.tick_params(axis='y', which='both', left=False, right=False)
 xlist = [0, 90, 181, 273, 365, 455, 546, 638, 730]
 xlabels=['2019-12', '2020-03', '2020-06', '2020-9', '2020-12', '2021-03', '2021-06', '2021-09', '2021-12']
 plt.xticks(xlist, xlabels)
-# plt.xticks(np.arange(0.5, 12.5), calendar.month_name[1:13])
 plt.yticks(np.arange(0.5, len(lazy_open_date)+0.5), lazy_offers)
 
 ax.xaxis.grid(True, which='major', color='w', lw=1, linestyle='solid')
