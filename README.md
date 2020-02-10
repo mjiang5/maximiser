@@ -14,6 +14,7 @@ New users can take advantage of bank sign up bonuses by opening checking and sav
 This web application is built to help users to find an optimal bonus strategy to maximize the return based on user's personalized requirements. And an lazy strategy is also developed for comparison, which is the strategy how a lazy person will choose and earn without this web application.
 
 ## Directory Structure
+'''
 ├── README.md              
 │
 ├── notebooks         
@@ -30,3 +31,4 @@ This web application is built to help users to find an optimal bonus strategy to
 ├── Procfile
 │
 ├── maximiser.py
+'''
