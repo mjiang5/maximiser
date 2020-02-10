@@ -110,7 +110,7 @@ for i in range(len(open_date)):
 plt.xlim(0, 365*2)
 plt.ylim(0, len(open_date))
 ax.set_aspect(40)
-plt.tick_params(axis='x', which='both', bottom=True, top=False)
+plt.tick_params(axis='x', which='both', bottom=False, top=False)
 plt.tick_params(axis='y', which='both', left=False, right=False)
 xlist = [0, 90, 181, 273, 365, 455, 546, 638, 730]
 xlabels=['2019-12', '2020-03', '2020-06', '2020-9', '2020-12', '2021-03', '2021-06', '2021-09', '2021-12']
