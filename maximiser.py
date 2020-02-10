@@ -94,9 +94,12 @@ optimal_holding['Close Date'] = optimal_holding['Close Date'].dt.strftime('%m-%d
 open_date = [optimal_holding.loc[i, 'open'].days for i in optimal_holding.index]
 close_date = [optimal_holding.loc[i, 'close'].days for i in optimal_holding.index]
 
+
+
 offers = ['Bonus {}'.format(i) for i in optimal_holding.index]
 
 from matplotlib.ticker import MultipleLocator
+import matplotlib.ticker as ticker
                                
 fig1 = plt.figure(figsize=(18, 5))
 ax = fig1.add_subplot(111)
@@ -108,16 +111,17 @@ for i in range(len(open_date)):
 plt.xlim(0, 365*2)
 plt.ylim(0, len(open_date))
 ax.set_aspect(40)
-plt.tick_params(axis='x', which='both', bottom=False, top=False)
+plt.tick_params(axis='x', which='both', bottom=True, top=False)
 plt.tick_params(axis='y', which='both', left=False, right=False)
 xlist = [0, 90, 181, 273, 365, 455, 546, 638, 730]
-xlabels=['2019-12', '2020-03', '2020-06', '2020-9', '2020-12', '2021-03', '2021-06', '2021-09', '2021-12']
+xlabels = ['0', '90', '181', '273', '365', '455', '546', '638', '730']
+#xlabels=['2019-12', '2020-03', '2020-06', '2020-9', '2020-12', '2021-03', '2021-06', '2021-09', '2021-12']
 plt.xticks(xlist, xlabels)
 plt.yticks(np.arange(0.5, len(open_date)+0.5), offers)
 
 ax.xaxis.grid(True, which='major', color='w', lw=1, linestyle='solid')
 ax.yaxis.grid(True, which='minor', color='w', lw=1, linestyle='solid')
-ax.xaxis.set_minor_locator(MultipleLocator(1))
+ax.xaxis.set_major_locator(ticker.FixedLocator(xlist))
 ax.yaxis.set_minor_locator(MultipleLocator(1))
 
 # hide axis spines
