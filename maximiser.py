@@ -9,6 +9,8 @@ st.title('MaxiMiser')
 st.write('')
 st.write('Simple bonus optimization strategy of opening new checking or saving accounts')
 st.markdown('[Project Slides](https://docs.google.com/presentation/d/e/2PACX-1vQG7KDThs3jOf9UwIpNeecrSf3KeJOFONO7UD6K0Eert46p6hyDwPmi1LgHxhtopPe9D5l68MMOZaBq/pub?start=false&loop=false&delayms=3000)')
+st.markdown('[Project Github](https://github.com/mjiang5/maximiser)')
+
 
 scraped_df = pd.read_csv('data/real_time_bonuses.csv')
 scraped_df = scraped_df.iloc[:, 1:]
