@@ -4,6 +4,7 @@
 A web application to maximize bank account sign up strategy for optimal return based on user’s budget constraints and personalized requirements
 
 Web Application Link: https://maximiser.herokuapp.com
+
 [Project Slides](https://docs.google.com/presentation/d/e/2PACX-1vQG7KDThs3jOf9UwIpNeecrSf3KeJOFONO7UD6K0Eert46p6hyDwPmi1LgHxhtopPe9D5l68MMOZaBq/pub?start=false&loop=false&delayms=3000)
 
 ## Project Description
